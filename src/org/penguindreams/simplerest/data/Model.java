@@ -1,6 +1,9 @@
 package org.penguindreams.simplerest.data;
 
-import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+
+import org.penguindreams.simplerest.general.SimpleRestException;
 
 class Model {
 
@@ -8,18 +11,13 @@ class Model {
     
     private Map<String,String> fields;
 
-    private String name;
+	private String name;
     
     private String xmlElement; 
-
-    /**
-              *used for CGLIB/AOP. Do not call.
-              */
-    public Model() {}
     
-    public Model(String name) {
-        this.name = name;
-    }
+    private String table;
+
+    public Model() {}
     
     public void setCrossWalk(Map<String,String> crosswalk) {
         this.crosswalk = crosswalk;
@@ -29,25 +27,52 @@ class Model {
         return crosswalk;
     }
     
-    public List<String> getValidFields() {
-        return null;
+    public Set<String> getValidFields() {
+        return crosswalk.keySet();
     }
     
-    public List<String> getFields() {
+    public Set<String> getFields() {
+    	return fields.keySet();
     }
     
     public void setField(String field, String value) {
-       if(!getValidFields.contains(field)) {
-           throw new Exception("TODO");
-       }
+       if(!getValidFields().contains(field)) {
+           throw new SimpleRestException("No field named " + field + " for model " + table);
+       } 
        else {
-           fields.set(field,value);
+           fields.put(field,value);
        }       
     }
+    
+    //Bean getters and setters
     
     public String getValue(String field) {
         return fields.get(field);
     }
+    
+    public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getXmlElement() {
+		return xmlElement;
+	}
+
+	public void setXmlElement(String xmlElement) {
+		this.xmlElement = xmlElement;
+	}
+
+	public String getTable() {
+		return table;
+	}
+
+	public void setTable(String table) {
+		this.table = table;
+	}
 }
 
 

@@ -5,5 +5,53 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd">
 
+	<!-- Actions -->
+
+	<bean id="ActionGET" class="org.penguindreams.simplerest.actions.GetAction" />
+	<bean id="ActionPOST" class="org.penguindreams.simplerest.actions.PostAction" />
+	<bean id="ActionPUT" class="org.penguindreams.simplerest.actions.PutAction" />
+	<bean id="ActionDELETE" class="org.penguindreams.simplerest.actions.DeleteAction" />
+
+	<!-- Models -->
+	
+	<bean id="ModelAbstract" class="org.penguindreams.simplerest.data.Model" abstract="true"/>
+	
+	<bean id="ModelCustomer" parent="ModelAbstract">
+		<property name="crosswalk">
+			<map>
+				<entry key="FirstName" value="nm_first" />
+				<entry key="LastName" value="nm_last" />
+			</map>
+		</property>
+		<property name="xmlElement" value="Customer" />
+		<property name="table" value="clients" />
+	</bean>
+	
+	<bean id="ModelService" parent="ModelAbstract">
+		<property name="crosswalk">
+			<map>
+				<entry key="Name" value="svc_name" />
+			</map>
+		</property>
+		<property name="xmlElement" value="Service" />
+		<property name="table" value="offers" />
+	</bean>		
+
+	<bean id="ModelAddress" parent="ModelAbstract">
+		<property name="crosswalk">
+			<map>
+				<entry key="CustomerNo" value="customer_id" />
+				<entry key="Street" value="str" />
+				<entry key="StreetExt" value="strext" />
+				<entry key="City" value="city" />
+				<entry key="State" value="st" />
+				<entry key="Zip" value="postal_code" />
+			</map>
+		</property>
+		<property name="xmlElement" value="Address" />
+		<property name="table" value="location" />
+	</bean>
+	
+	
 
 </beans>

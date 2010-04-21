@@ -1,17 +1,17 @@
 USE PenguinRest;
 
-CREATE TABLE customers (
+CREATE TABLE clients (
 	id INT UNSIGNED PRIMARY KEY,
 	nm_first VARCHAR(50),
 	nm_last  VARCHAR(50)
 );
 
-CREATE TABLE services (
+CREATE TABLE offers (
 	id INT UNSIGNED PRIMARY KEY,
 	svc_name VARCHAR(50)
 );
 
-CREATE TABLE addresses (
+CREATE TABLE locations (
 	id INT UNSIGNED PRIMARY KEY,
 	customer_id INT UNSIGNED,
 	str VARCHAR(100),
