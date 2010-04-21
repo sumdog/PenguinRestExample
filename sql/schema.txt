@@ -1,0 +1,28 @@
+USE PenguinRest;
+
+CREATE TABLE customers (
+	id INT UNSIGNED PRIMARY KEY,
+	nm_first VARCHAR(50),
+	nm_last  VARCHAR(50)
+);
+
+CREATE TABLE services (
+	id INT UNSIGNED PRIMARY KEY,
+	svc_name VARCHAR(50)
+);
+
+CREATE TABLE addresses (
+	id INT UNSIGNED PRIMARY KEY,
+	customer_id INT UNSIGNED,
+	str VARCHAR(100),
+	strext VARCHAR(100),
+	city VARCHAR(100),
+	st VARCHAR(12),
+	postal_code VARCHAR(10)
+);
+
+CREATE TABLE subscriptions (
+	id INT UNSIGNED PRIMARY KEY,
+	address_id UNSIGNED INT,
+	service_id UNSIGNED INT
+);
