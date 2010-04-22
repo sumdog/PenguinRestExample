@@ -13,9 +13,9 @@
 	<bean id="ActionDELETE" class="org.penguindreams.simplerest.actions.DeleteAction" />
 
 	<!-- Models -->
-	
-	<bean id="ModelAbstract" class="org.penguindreams.simplerest.data.Model" abstract="true"/>
-	
+
+	<bean id="ModelAbstract" class="org.penguindreams.simplerest.data.Model" abstract="true" />
+
 	<bean id="ModelCustomer" parent="ModelAbstract">
 		<property name="crosswalk">
 			<map>
@@ -26,7 +26,7 @@
 		<property name="xmlElement" value="Customer" />
 		<property name="table" value="clients" />
 	</bean>
-	
+
 	<bean id="ModelService" parent="ModelAbstract">
 		<property name="crosswalk">
 			<map>
@@ -35,7 +35,7 @@
 		</property>
 		<property name="xmlElement" value="Service" />
 		<property name="table" value="offers" />
-	</bean>		
+	</bean>
 
 	<bean id="ModelAddress" parent="ModelAbstract">
 		<property name="crosswalk">
@@ -51,7 +51,9 @@
 		<property name="xmlElement" value="Address" />
 		<property name="table" value="location" />
 	</bean>
-	
-	
+
+
 
 </beans>
+
+

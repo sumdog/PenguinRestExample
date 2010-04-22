@@ -20,13 +20,8 @@ public class ServiceHandler extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String method = request.getMethod();
+		ServiceRequest serviceRequst = new ServiceRequest(request);
 		
-		String path = request.getRequestURI().substring( request.getContextPath().length() + request.getServletPath().length() );
-		
-		response.getWriter().write("Path" + path);
-		
-		response.getWriter().close();
 		
 		
 	}
